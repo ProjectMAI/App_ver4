@@ -1,0 +1,155 @@
+WindowManager:
+    RegistrationScreen:
+    SignUpScreen:
+    MainScreen:
+    ProfileScreen:
+
+
+<RegistrationScreen>:
+    name: "registration"
+
+    namee: namee
+    email: email
+    password: passw
+
+    BoxLayout:
+        size_hint: .7, .7
+        pos_hint: {"center_x": .5, "center_y": .5}
+
+        FloatLayout:
+            Label: 
+                text: "Create an Account"
+                font_size: "20dp"
+                size_hint: 0.8, 0.2
+                pos_hint: {"center_x": 0.5, "center_y": 0.9}
+            
+            TextInput:
+                id: namee
+                hint_text: "Name"
+                pos_hint: {"center_x": 0.5, "top": 0.8}
+                size_hint: 1, 0.12
+                multiline: False
+
+            TextInput:
+                id: email
+                hint_text: "Email"
+                pos_hint: {"center_x": 0.5, "top": 0.8-0.13}
+                size_hint: 1, 0.12
+                multiline: False
+            
+            TextInput:
+                id: passw
+                hint_text: "Password"
+                pos_hint: {"center_x": 0.5, "top": 0.8-0.13*2}
+                size_hint: 1, 0.12
+                multiline: False
+                password: True
+
+            Label:
+                text: "Already have an Account? Log In"
+                pos_hint: {"center_x": .5, "top": .5}
+
+            Button:
+                text: "Submit"
+                pos_hint:{"center_x": 0.5,"y": 0.25}
+                size_hint: 0.4, 0.1
+
+                on_release:
+                    root.manager.transition.direction = "left"
+                    app.root.current = "sign"
+
+<SignUpScreen>:
+    name: "sign"
+
+    BoxLayout:
+        size_hint: .6, .7
+        pos_hint: {"center_x": .5, "center_y": .6}
+
+        FloatLayout:
+            Label:
+                text: "Login"
+                font_size: "20dp"
+                bold: True
+                size_hint: 1.5, 1.5
+                pos_hint: {"center_x": .5, "center_y": .6}     
+                font_style: "H4"   
+            TextInput:
+                hint_text: "Email"
+                size_hint: 1, .1
+                pos_hint: {"center_x": .5, "center_y": .48}
+                multiline: False
+
+            TextInput:
+                hint_text: "Password"
+                size_hint: 1, .1
+                pos_hint: {"center_x": .5, "center_y": .36}
+                multiline: False
+                password: True
+            
+            Button:
+                text: "Login"
+                size_hint: 1, .1
+                pos_hint: {"center_x": .5, "center_y": .24}
+                on_release: 
+                    app.root.current = "main"
+                    root.manager.transition.direction = "left"
+
+
+
+<MainScreen>:
+    name: "main"
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: ("20dp", "20 dp", "20 dp", "20 dp")
+
+        BoxLayout:
+            size_hint: 1, .1
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+            Label:
+                text: "English tests"
+            
+            Button:
+                text: "Exit"
+                pos_hint: {"right_x": 1, "center_y": .5}
+                size_hint: .5, .5
+                on_release: 
+                    app.root.current = "sign"
+                    root.manager.transition.direction = "right"
+
+        ScrollView:
+            GridLayout:
+                cols: 2
+                spacing: "20dp", "20dp"
+                size_hint: 1, None
+                height: self.minimum_height
+                
+
+                MyBigButton:
+                    text: "1"
+                MyBigButton:
+                    text: "2"
+                MyBigButton:
+                    text: "3"
+                MyBigButton:
+                    text: "4"
+                MyBigButton:
+                    text: "5"
+                MyBigButton:
+                    text: "6"
+                MyBigButton:
+                    text: "6"
+                MyBigButton:
+                    text: "7"
+                MyBigButton:
+                    text: "8"
+                MyBigButton:
+                    text: "9"
+                
+<ProfileScreen>:
+    name: "profile"
+
+<MyBigButton@Button>:
+    size_hint: 1, None
+    height: "210dp"
