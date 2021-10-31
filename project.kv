@@ -52,7 +52,7 @@ WindowManager:
 
                 on_release:
                     root.manager.transition.direction = "left"
-                    app.root.current = "sign"
+                    root.submit()
 
             Label:
                 text: "Already have an Account?"
@@ -65,10 +65,13 @@ WindowManager:
 
                 on_release:
                     root.manager.transition.direction = "left"
-                    app.root.current = "sign" 
+                    root.login()
 
 <SignUpScreen>:
     name: "sign"
+
+    email: email
+    password: password
 
     BoxLayout:
         size_hint: .6, .7
@@ -81,14 +84,17 @@ WindowManager:
                 bold: True
                 size_hint: 1.5, 1.5
                 pos_hint: {"center_x": .5, "center_y": .6}     
-                font_style: "H4"   
+                font_style: "H4" 
+                
             TextInput:
+                id: email
                 hint_text: "Email"
                 size_hint: 1, .1
                 pos_hint: {"center_x": .5, "center_y": .48}
                 multiline: False
 
             TextInput:
+                id: password
                 hint_text: "Password"
                 size_hint: 1, .1
                 pos_hint: {"center_x": .5, "center_y": .36}
@@ -100,7 +106,7 @@ WindowManager:
                 size_hint: 1, .1
                 pos_hint: {"center_x": .5, "center_y": .24}
                 on_release: 
-                    app.root.current = "main"
+                    root.sign()
                     root.manager.transition.direction = "up"
             
             Label:
@@ -113,8 +119,8 @@ WindowManager:
                 size_hint: 0.3, 0.1
 
                 on_release:
+                    root.create()
                     root.manager.transition.direction = "right"
-                    app.root.current = "registration" 
 
 <MainScreen>:
     name: "main"
@@ -136,7 +142,7 @@ WindowManager:
                 pos_hint: {"right_x": 1, "center_y": .5}
                 size_hint: .5, .5
                 on_release: 
-                    app.root.current = "sign"
+                    root.logout()
                     root.manager.transition.direction = "down"
 
         ScrollView:
