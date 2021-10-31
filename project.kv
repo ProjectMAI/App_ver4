@@ -45,10 +45,6 @@ WindowManager:
                 multiline: False
                 password: True
 
-            Label:
-                text: "Already have an Account? Log In"
-                pos_hint: {"center_x": .5, "top": .5}
-
             Button:
                 text: "Submit"
                 pos_hint:{"center_x": 0.5,"y": 0.25}
@@ -57,6 +53,19 @@ WindowManager:
                 on_release:
                     root.manager.transition.direction = "left"
                     app.root.current = "sign"
+
+            Label:
+                text: "Already have an Account?"
+                pos_hint: {"center_x": 0.3, "center_y": 0.15}
+                
+            Button:
+                text: "Log In"
+                pos_hint: {"right": 1.05, "center_y": 0.15}
+                size_hint: 0.3, 0.1
+
+                on_release:
+                    root.manager.transition.direction = "left"
+                    app.root.current = "sign" 
 
 <SignUpScreen>:
     name: "sign"
@@ -92,9 +101,20 @@ WindowManager:
                 pos_hint: {"center_x": .5, "center_y": .24}
                 on_release: 
                     app.root.current = "main"
-                    root.manager.transition.direction = "left"
+                    root.manager.transition.direction = "up"
+            
+            Label:
+                text: "Don't have an Account?"
+                pos_hint: {"center_x": 0.3, "center_y": 0.1}
+                
+            Button:
+                text: "Create"
+                pos_hint: {"right": 1.05, "center_y": 0.1}
+                size_hint: 0.3, 0.1
 
-
+                on_release:
+                    root.manager.transition.direction = "right"
+                    app.root.current = "registration" 
 
 <MainScreen>:
     name: "main"
@@ -109,6 +129,7 @@ WindowManager:
 
             Label:
                 text: "English tests"
+                font_size: "20dp"
             
             Button:
                 text: "Exit"
@@ -116,7 +137,7 @@ WindowManager:
                 size_hint: .5, .5
                 on_release: 
                     app.root.current = "sign"
-                    root.manager.transition.direction = "right"
+                    root.manager.transition.direction = "down"
 
         ScrollView:
             GridLayout:
